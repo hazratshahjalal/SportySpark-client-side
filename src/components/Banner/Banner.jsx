@@ -16,7 +16,7 @@ const Banner = () => {
         <p className="text-lg sm:text-2xl mb-6 text-warning">Discover the world of sports toys!</p>
         <small className="text-base sm:text-lg mb-6">Get ready for endless fun and excitement with our wide range of sports toys. Whether you're into soccer, basketball, or racing, we have something for everyone.</small>
 
-        <Link to="/shop"><button className="btn btn-gray">Shop Now</button>
+        <Link to="/allToys"><button className="btn btn-gray">Shop Now</button>
         </Link>
       </div>
     </div>

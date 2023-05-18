@@ -11,9 +11,8 @@ const Header = () => {
 
         <div className="flex gap-4 text-lg font-semibold text-black">
           <Link to='/'>Home</Link>
-          <Link to='/addToy'>Add Toys</Link>
+          <Link to='/allToys'>All Toys</Link>
           <Link to='/blogs'>Blogs</Link>
-          <Link to='/about'>About</Link>
           <Link to='/contact'>Contact Us</Link>
         </div>
 
@@ -31,16 +30,6 @@ const Header = () => {
                 <img src="" />
               </div>
             </label>
-            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li><a>Settings</a></li>
-              <li><a>Logout</a></li>
-            </ul>
           </div>
         </div> */}
       </div>
