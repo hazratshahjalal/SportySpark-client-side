@@ -17,6 +17,13 @@ const Header = () => {
           <Link to='/contact'>Contact Us</Link>
         </div>
 
+        <div className="flex gap-3">
+          <Link to="/login"><button className="btn btn-outline btn-gray">Sign In</button>
+          </Link>
+          <Link to="/register"><button className="btn btn-gray ">Register Now</button>
+          </Link>
+        </div>
+
         {/* <div>
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

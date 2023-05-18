@@ -4,10 +4,11 @@ import logo from '../../../assets/logo.png'
 const Footer = () => {
   return (
     <div className="">
-      <footer className="footer p-10  bg-neutral text-neutral-content">
+      <footer className="footer p-10  bg-gray-600 text-neutral-content">
         <div>
           <div>
-            <img className='w-24 !important' src={logo} alt="" />
+            <Link to='/'> <img className='w-24 !important' src={logo} alt="" />
+            </Link>
           </div>
           <h2 className="text-3xl font-bold">Sporty Spark</h2>
           <p className="">Providing reliable products since <span className="text-warning">2019</span>.</p>
@@ -33,7 +34,7 @@ const Footer = () => {
           <Link className="link link-hover">Cookie policy</Link>
         </div>
       </footer>
-      <footer className="footer px-10 py-4 border-t  bg-neutral text-neutral-content border-base-300">
+      <footer className="footer px-10 py-4 border-t  bg-gray-700 text-neutral-content border-base-300">
         <div className="items-center grid-flow-col">
 
           <p className="text-warning"> <span className="font-bold text-xl">SportySpark Ltd.</span><br />

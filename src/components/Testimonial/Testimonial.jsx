@@ -4,13 +4,13 @@ const Testimonial = () => {
   const testimonialsData = [
     {
       id: 1,
-      name: 'Sarah Johnson',
+      name: 'Sheikh Jubayer',
       position: 'Parent',
       testimonial: 'I found the sportySpark toy marketplace to be the perfect place to find sports toys for my kids. The website is user-friendly, and the variety of toys available is impressive.',
     },
     {
       id: 2,
-      name: 'Mike Thompson',
+      name: 'M Abdullah',
       position: 'Sports Coach',
       testimonial: 'As a sports coach, I highly recommend the sportySpark toy marketplace. They have a great selection of sports-related toys that are both educational and fun. My students love them!',
     },
