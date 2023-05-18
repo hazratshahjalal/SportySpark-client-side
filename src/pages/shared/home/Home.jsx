@@ -1,7 +1,15 @@
+import About from "../../../components/About/About";
+import Banner from "../../../components/Banner/Banner";
+import Featured from "../../../components/Featured/Featured";
+import Testimonial from "../../../components/Testimonial/Testimonial";
+
 const Home = () => {
   return (
     <div>
-      <h2 className="text-5xl">This is oome</h2>
+      <Banner></Banner>
+      <Featured></Featured>
+      <Testimonial></Testimonial>
+      <About></About>
     </div>
   );
 };

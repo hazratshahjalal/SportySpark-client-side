@@ -3,7 +3,7 @@ import logo from "../../../../src/assets/logo.png"
 
 const Header = () => {
   return (
-    <div className="bg-neutral-100 ">
+    <div className="bg-slate-100 ">
       <div className="navbar container mx-auto flex justify-between">
         <div className="">
           <Link className="w-40"><img src={logo} alt="" /></Link>
