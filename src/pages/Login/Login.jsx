@@ -3,12 +3,19 @@ import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+  const handleLogin = event => {
+    event.preventDefault();
+
+  }
+
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="flex justify-center items-center w-1/2">
         <div className="max-w-md w-full bg-white shadow-md rounded-md px-8 py-6">
           <h2 className="text-2xl font-bold mb-6">Login</h2>
-          <form className="space-y-4">
+          {/* Login Form With Submission */}
+          <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-gray-700 font-medium">Email</label>
               <input type="email" id="email" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
@@ -20,9 +27,11 @@ const Login = () => {
             <button className="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">Login</button>
           </form>
           <div className="flex space-x-4 py-5">
+            {/* google login button */}
             <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 flex items-center">
               <FaGoogle className="mr-2" /> Login with Google
             </button>
+            {/* github sign in button */}
             <button className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700 flex items-center">
               <FaGithub className="mr-2" /> Login with GitHub
             </button>
@@ -31,8 +40,8 @@ const Login = () => {
           <Link to="" className="text-yellow-800 hover:underline">Forget password? Reset</Link>
         </div>
       </div>
-      <div className="flex justify-center items-center w-1/2 flex-col space-y-4">
-        <div>
+      <div className="flex justify-center max-w-md w-full bg-white shadow-md rounded-md px-8 py-12 items-center  flex-col p space-y-4">
+        <div className=''>
           <h2 className='text-3xl block text-black font-bold'>Don't Have an Account?</h2>
         </div>
         <div>
