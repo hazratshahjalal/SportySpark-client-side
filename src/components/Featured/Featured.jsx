@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import toy1 from '../../assets/tennis.jpg';
-import toy2 from '../../assets/Transformer-Toy-Car.jpg';
+import toy2 from '../../assets/boy-basket.jpg';
 import toy3 from '../../assets/remote-blue.jpg';
 import toy4 from '../../assets/motor-orange.jpg';
 import toy5 from '../../assets/cycle-moto.jpg';
@@ -8,7 +8,7 @@ import toy6 from '../../assets/tennis.jpg';
 import toy7 from '../../assets/football1.jpg';
 import toy8 from '../../assets/set1.jpg';
 import toy9 from '../../assets/tennis1.jpg';
-import toy10 from '../../assets/tennis1.jpg';
+import toy10 from '../../assets/boy-basket.jpg';
 import '../Featured/Featured.css';
 
 const Featured = () => {
