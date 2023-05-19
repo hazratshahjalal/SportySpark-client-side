@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const About = () => {
   return (
     <section className="py-12">
-      <h2 className="text-5xl text-center mb-8">About Us</h2>
+      <h2 className="text-5xl text-center font-semibold mb-8">About Us</h2>
 
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">

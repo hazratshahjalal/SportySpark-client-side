@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import toy1 from '../../assets/tennis.jpg';
 import toy2 from '../../assets/Transformer-Toy-Car.jpg';
-import toy3 from '../../assets/tennis1.jpg';
-import toy4 from '../../assets/tennis1.jpg';
-import toy5 from '../../assets/tennis1.jpg';
-import toy6 from '../../assets/tennis1.jpg';
-import toy7 from '../../assets/tennis1.jpg';
-import toy8 from '../../assets/tennis1.jpg';
+import toy3 from '../../assets/remote-blue.jpg';
+import toy4 from '../../assets/motor-orange.jpg';
+import toy5 from '../../assets/cycle-moto.jpg';
+import toy6 from '../../assets/tennis.jpg';
+import toy7 from '../../assets/football1.jpg';
+import toy8 from '../../assets/set1.jpg';
 import toy9 from '../../assets/tennis1.jpg';
 import toy10 from '../../assets/tennis1.jpg';
 import '../Featured/Featured.css';
@@ -25,7 +25,11 @@ const Featured = () => {
 
   return (
     <div className="overflow-hidden my-12">
-      <h1 className='text-5xl font-semibold text-center my-6'>Featured Products</h1>
+      <h1 className='text-5xl font-semibold text-center mb-6'>Featured Products</h1>
+      <div className="container w-1/2 mx-auto"> <p className="text-center mx-auto pb-10 container text-gray-600 mt-4">
+        Explore our collection of featured products and find the perfect toys for your little ones. With a wide range of options available, you can choose from the latest trends in toys. Don't miss out on the opportunity to bring joy and excitement into your child's playtime!
+      </p></div>
+
       <div className="flex w-full gap-20 space-x-20 animate-marquee justify-end">
         {toys.map((toy, index) => (
           <img
@@ -38,6 +42,7 @@ const Featured = () => {
           />
         ))}
       </div>
+
     </div>
   );
 };

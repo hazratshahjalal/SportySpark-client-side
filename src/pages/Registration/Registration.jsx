@@ -29,7 +29,7 @@ const Registration = () => {
           </form>
           <p className="text-gray-600 mt-4">
             Already have an account?{' '}
-            <Link to="/login" className="text-yellow-600 hover:underline">Login</Link>
+            <Link to="/login" className="text-yellow-500 hover:underline">Login</Link>
           </p>
         </div>
       </div>
