@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
+
+  const { logIn } = useContext(AuthContext);
+
   const handleLogin = event => {
     event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password)
+
+    logIn(email, password)
+      .then(result => {
+        user = result.user;
+        console.log(user);
+      })
+      .catch(error => console.log(error))
 
   }
 
@@ -18,11 +33,11 @@ const Login = () => {
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-gray-700 font-medium">Email</label>
-              <input type="email" id="email" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <input type="email" name='email' id="email" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
             <div>
               <label className="block text-gray-700 font-medium">Password</label>
-              <input type="password" id="password" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <input type="password" name='password' id="password" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
             <button className="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">Login</button>
           </form>
@@ -37,12 +52,12 @@ const Login = () => {
             </button>
 
           </div>
-          <Link to="" className="text-yellow-800 hover:underline">Forget password? Reset</Link>
+          <Link to="" className="text-yellow-800 font-medium hover:underline">Forget password? Reset</Link>
         </div>
       </div>
-      <div className="flex justify-center max-w-md w-full bg-white shadow-md rounded-md px-8 py-12 items-center  flex-col p space-y-4">
+      <div className="flex justify-center max-w-lg w-full bg-white shadow-md rounded-md px-8 py-12 items-center  flex-col p space-y-4">
         <div className=''>
-          <h2 className='text-3xl block text-black font-bold'>Don't Have an Account?</h2>
+          <h2 className='text-2xl block text-black font-bold'>Don't Have a <span className='text-3xl text-gray-900 font-sans'>Sporty Spark</span> Account?</h2>
         </div>
         <div>
           <h1>
