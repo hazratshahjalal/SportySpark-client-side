@@ -31,12 +31,25 @@ const Header = () => {
           <Link className="w-40"><img src={logo} alt="" /></Link>
         </div>
 
-        <div className="flex gap-4 text-lg font-semibold text-black">
+        {user ? <div className="flex gap-4 text-lg font-semibold text-black">
           <Link to='/'>Home</Link>
           <Link to='/allToys'>All Toys</Link>
+          <Link to='/myToys'>My Toys</Link>
+          <Link to='/addToy'>Add a Toy</Link>
           <Link to='/blogs'>Blogs</Link>
           <Link to='/contact'>Contact Us</Link>
         </div>
+          :
+          <div className="flex gap-4 text-lg font-semibold text-black">
+            <Link to='/'>Home</Link>
+            <Link to='/allToys'>All Toys</Link>
+            <Link to='/blogs'>Blogs</Link>
+            <Link to='/contact'>Contact Us</Link>
+          </div>
+        }
+
+
+
 
         {user ? < div className="flex gap-3 items-center">
           <div className="">

@@ -9,7 +9,7 @@ const Main = () => {
 
   // Check if the current route is the 404 route
   const isNotFoundPage = ![
-    '/', '/login', '/register', '/blogs', '/allToys', '/myToys', '/addToy'
+    '/', '/login', '/register', '/blogs', '/allToys', '/myToys', '/addToy', '/contact'
   ].includes(location.pathname);
 
   return (

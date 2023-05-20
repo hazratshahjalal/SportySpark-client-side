@@ -36,6 +36,7 @@ const Login = () => {
 
   const googleProvider = new GoogleAuthProvider();
   const handleGoogleLogIn = () => {
+    event.preventDefault();
     signInWithPopup(auth, googleProvider)
       .then(result => {
         const user = result.user;
@@ -45,7 +46,6 @@ const Login = () => {
       })
       .catch(error => {
         console.error(error);
-        setPassError(error.message);
         setSuccessMessage('');
       }
       )

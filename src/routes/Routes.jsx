@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { MemoryRouter, createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
 import Home from "../pages/shared/home/Home";
 import Login from "../pages/Login/Login";
@@ -7,6 +7,8 @@ import Blogs from "../pages/Blogs/Blogs";
 import AllToys from "../pages/AllToys/AllToys";
 import NotFound from "../pages/NotFound/NotFound";
 import AddToy from "../pages/AddToy/AddToy";
+import ContactUs from "../pages/ContactUs/ContactUs";
+import MyToys from "../pages/MyToys/MyToys";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
       {
         path: '/addToy',
         element: <AddToy></AddToy>
+      },
+      {
+        path: '/myToys',
+        element: <MyToys></MyToys>
+      },
+      {
+        path: '/contact',
+        element: <ContactUs></ContactUs>
       },
       {
         path: '*',
