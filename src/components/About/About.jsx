@@ -11,7 +11,7 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className=' bg-slate-50 rounded p-4'>
             <p className="text-3xl mb-6">
-              At sportySpark Toy Marketplace, we are passionate about providing the best sports toys for children of all ages.
+              At <span className='text-yellow-600'>Sporty Spark</span>, we are passionate about providing the best sports toys for children of all ages.
             </p>
             <p className="mb-6">
               Our mission is to inspire kids to stay active, have fun, and develop their skills through play.
