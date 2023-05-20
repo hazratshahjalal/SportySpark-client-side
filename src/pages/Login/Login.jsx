@@ -2,43 +2,55 @@ import React, { useContext, useState } from 'react';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { GoogleAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import app from '../../firebase/firebase.config';
 
 const Login = () => {
-
+  const auth = getAuth(app)
   const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passError, setPassError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
-  const [passError, setPassError] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
-
-  const handleLogin = event => {
+  const handleLogin = (event) => {
     event.preventDefault();
-    setSuccessMessage('')
+    setSuccessMessage('');
     loginUser(email, password)
       .then((result) => {
-        // Signed in 
         const user = result.user;
-        setPassError('')
-        setEmail('')
-        setPassword('')
-        setSuccessMessage("Successfully Login")
-        // Redirect to the home page
-        navigate('/')
-        // ...
+        setPassError('');
+        setEmail('');
+        setPassword('');
+        setSuccessMessage('Successfully Login');
+        navigate('/');
       })
       .catch((error) => {
-        console.error(error)
-        setPassError(error.message)
-        setSuccessMessage('')
+        console.error(error);
+        setPassError(error.message);
+        setSuccessMessage('');
       });
+  };
 
+  const googleProvider = new GoogleAuthProvider();
+  const handleGoogleLogIn = () => {
+    signInWithPopup(auth, googleProvider)
+      .then(result => {
+        const user = result.user;
+        setSuccessMessage("Login Successful")
+        console.log(user)
+        navigate('/')
+      })
+      .catch(error => {
+        console.error(error);
+        setPassError(error.message);
+        setSuccessMessage('');
+      }
+      )
   }
+
 
 
   return (
@@ -66,7 +78,7 @@ const Login = () => {
           <p className="text-xl text-red-500">{passError}</p>
           <div className="flex space-x-4 py-5">
             {/* google login button */}
-            <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 flex items-center">
+            <button onClick={handleGoogleLogIn} className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 flex items-center">
               <FaGoogle className="mr-2" /> Login with Google
             </button>
             {/* github sign in button */}

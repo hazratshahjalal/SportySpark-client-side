@@ -32,9 +32,20 @@ const Footer = () => {
       <footer className="footer px-10 py-4 border-t  bg-gray-700 text-neutral-content border-base-300">
         <div className="items-center grid-flow-col">
 
-          <p className="text-warning"> <span className="font-bold text-xl hover:text-white">SportySpark Ltd.</span><br />
-            &copy; {new Date().getFullYear()} sportySpark. All rights reserved.
+          <p className="text-warning"> <span className="font-bold text-xl text-white">SportySpark Ltd.</span>
+            <p>
+              <strong>Phone:</strong> +1 123-456-7890
+            </p>
+            <p>
+              <strong>Mail:</strong> sportySpark@yahoo.com
+            </p>
+            <p>
+              <strong>Address:</strong> 123 Street, City, State, Bangladesh
+            </p>
+            <br />
+            <p className="text-white">  &copy; {new Date().getFullYear()} sportySpark. All rights reserved.</p>
           </p>
+
 
 
         </div>
