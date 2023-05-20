@@ -97,7 +97,7 @@ const Registration = () => {
                 id="imageUrl"
                 className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2  focus:ring-blue-500" />
             </div>
-            <p className="text-lg text-green-500">{successMessage}<Link to='/login'><br></br><span className='text-lg p-1 text-black bg-green-500 font-semibold'>Login Now</span></Link> </p>
+            <p className="text-lg text-green-500">{successMessage}</p>
             <p className="text-lg text-red-500">{passError}</p>
             <button className="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">Register</button>
           </form>

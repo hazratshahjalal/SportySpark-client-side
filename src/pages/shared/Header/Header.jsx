@@ -5,7 +5,8 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext)
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -46,7 +47,11 @@ const Header = () => {
               {/* User Avatar */}
               <label className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img title={user.name} src={user.photoURL} alt="User Avatar" />
+                  {user.photoURL ? (
+                    <img title={user.displayName || ''} src={user.photoURL} alt="User Avatar" />
+                  ) : (
+                    <img title={user.displayName || ''} src={user.photoURL} alt="User Avatar" />
+                  )}
                 </div>
               </label>
               {/* Logout Button */}

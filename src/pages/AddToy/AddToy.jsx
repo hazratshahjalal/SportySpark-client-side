@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
-
+import { AuthContext } from '../../providers/AuthProvider';
 
 const AddToy = () => {
-
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => {
     console.log(data);
     reset(); // Reset the form after successful submission
+  }
 
+  const { user } = useContext(AuthContext);
+
+  if (user) {
+    console.log(user.email); // Access the user's email
   }
 
 
@@ -33,12 +37,15 @@ const AddToy = () => {
 
         <div className="mb-4">
           <label htmlFor="sellerEmail" className="block font-medium text-gray-700">Seller Email</label>
-          <input type="email"
-            // value={user?.email}
+          <input
+            type="email"
             id="sellerEmail"
             {...register('sellerEmail')}
-            className="w-full border border-gray-700 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg" />
+            defaultValue={user?.email || ''}
+            className="w-full border border-gray-700 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg"
+          />
         </div>
+
 
         <div className="mb-4">
           <label htmlFor="subCategory" className="block font-medium text-gray-700">Sub-category</label>
@@ -61,8 +68,8 @@ const AddToy = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="quantity" className="block font-medium text-gray-700">Available Quantity</label>
-          <input type="number" id="quantity" {...register('quantity')} className="w-full border border-gray-700 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg" />
+          <label htmlFor="availableQuantity" className="block font-medium text-gray-700">Available Quantity</label>
+          <input type="number" id="availableQuantity" {...register('availableQuantity')} className="w-full border border-gray-700 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg" />
         </div>
 
         <div className="mb-4">

@@ -4,16 +4,17 @@ import logo from '../../../assets/logo.png'
 const Footer = () => {
   return (
     <div className="">
-      <footer className="footer p-10 flex justify-between bg-gray-600 text-neutral-content">
-        <div>
-          <div>
-            <Link to='/'> <img className='w-24 !important' src={logo} alt="" />
+      <footer className="footer p-10 md:flex md:justify-between bg-gray-600 text-neutral-content">
+        <div className="md:w-1/3">
+          <div className="mb-5">
+            <Link to="/">
+              <img className="w-24" src={logo} alt="Logo" />
             </Link>
           </div>
           <h2 className="text-3xl font-bold">Sporty Spark</h2>
           <p className="">Providing reliable products since <span className="text-warning">2019</span>.</p>
         </div>
-        <div className="flex justify-between gap-x-32	">
+        <div className="md:flex md:justify-between md:w-2/3 md:gap-x-32 mt-5 md:mt-0">
           <div className="flex flex-col gap-2">
             <span className="footer-title">Company</span>
             <Link to='/aboutUs' className="link link-hover">About us</Link>
@@ -37,7 +38,7 @@ const Footer = () => {
               <strong>Phone:</strong> +1 123-456-7890
             </p>
             <p>
-              <strong>Mail:</strong> sportySpark@yahoo.com
+              <strong>Email:</strong> sportySpark@yahoo.com
             </p>
             <p>
               <strong>Address:</strong> 123 Street, City, State, Bangladesh
