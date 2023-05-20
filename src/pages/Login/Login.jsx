@@ -1,25 +1,42 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
 
-  const { logIn } = useContext(AuthContext);
+  const { loginUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [passError, setPassError] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
 
   const handleLogin = event => {
     event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password)
-
-    logIn(email, password)
-      .then(result => {
-        user = result.user;
-        console.log(user);
+    setSuccessMessage('')
+    loginUser(email, password)
+      .then((result) => {
+        // Signed in 
+        const user = result.user;
+        setPassError('')
+        setEmail('')
+        setPassword('')
+        setSuccessMessage("Successfully Login")
+        // Redirect to the home page
+        navigate('/')
+        // ...
       })
-      .catch(error => console.log(error))
+      .catch((error) => {
+        console.error(error)
+        setPassError(error.message)
+        setSuccessMessage('')
+      });
 
   }
 
@@ -33,14 +50,20 @@ const Login = () => {
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-gray-700 font-medium">Email</label>
-              <input type="email" name='email' id="email" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <input type="email" name='email' id="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)} className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
             <div>
               <label className="block text-gray-700 font-medium">Password</label>
-              <input type="password" name='password' id="password" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <input type="password" name='password' id="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)} className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
             <button className="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">Login</button>
           </form>
+          <p className="text-xl text-green-500">{successMessage}</p>
+          <p className="text-xl text-red-500">{passError}</p>
           <div className="flex space-x-4 py-5">
             {/* google login button */}
             <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 flex items-center">

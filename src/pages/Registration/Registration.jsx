@@ -1,73 +1,49 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
-// import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-
-
-
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import app from '../../firebase/firebase.config';
 
 
 const Registration = () => {
-  // const auth = getAuth()
 
+  const { registerUser } = useContext(AuthContext);
 
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [photoURL, setPhotoURL] = useState('');
-
-  // const [passError, setPassError] = useState('')
-  // const [successMessage, setSuccessMessage] = useState('')
-
-  // const handleSignUp = (event) => {
-  //   event.preventDefault();
-
-
-
-
-  //   createUserWithEmailAndPassword(auth, email, password, name)
-  //     .then((userCredential) => {
-  //       // Signed in 
-  //       const registeredUser = userCredential.user;
-  //       setPassError('')
-  //       setName('')
-  //       setEmail('')
-  //       setPassword('')
-  //       setPhotoURL('')
-  //       setSuccessMessage("User has been created successfully")
-  //       console.log(registeredUser)
-  //       // ...
-  //     })
-  //     .catch((error) => {
-  //       console.error(error)
-  //       setPassError(error.message)
-  //       setSuccessMessage('')
-  //     });
-
-
-  // };
-
-  const { createUser } = useContext(AuthContext)
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [photoURL, setPhotoURL] = useState('');
+  const [passError, setPassError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleSignUp = (event) => {
     event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    const photoURL = form.photoURL.value;
-    console.log(name, email, password, photoURL)
+    if (!/^(?=.*[A-Za-z])/.test(password)) {
+      setPassError('Password must be 8 characters');
+      setSuccessMessage('');
+      return;
+    }
 
-    createUser(email, password)
-      .then(result => {
-        const user = result.user;
-        console.log(user)
+    registerUser(email, password, name) // Use registerUser from AuthContext
+      .then((result) => {
+        // Handle successful registration
+        console.log(result.user);
+        setPassError('');
+        setName('');
+        setEmail('');
+        setPassword('');
+        setPhotoURL('');
+        setSuccessMessage('User has been created successfully.');
       })
-      .catch(error => {
-        console.error(error.message)
-      })
+      .catch((error) => {
+        // Handle registration error
+        console.error(error);
+        setPassError(error.message);
+        setSuccessMessage('');
+      });
+  };
 
-  }
+
 
 
   return (
@@ -81,8 +57,8 @@ const Registration = () => {
               <input type="text"
                 placeholder="Enter your name"
                 name="name"
-                // value={name}
-                // onChange={(event) => setName(event.target.value)}
+                value={name}
+                onChange={(event) => setName(event.target.value)}
                 required
                 id="name"
                 className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
@@ -92,8 +68,8 @@ const Registration = () => {
               <input type="email"
                 placeholder="Enter email"
                 name='email'
-                // value={email}
-                // onChange={(event) => setEmail(event.target.value)}
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
                 required
                 id="email"
                 className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
@@ -103,8 +79,8 @@ const Registration = () => {
               <input type="password"
                 placeholder="Password"
                 name='password'
-                // value={password}
-                // onChange={(event) => setPassword(event.target.value)}
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
                 required
                 pattern="(?=.{6,}"
                 id="password"
@@ -115,12 +91,14 @@ const Registration = () => {
               <input type="text"
                 placeholder="Enter photo URL"
                 name='photoURL'
-                // value={photoURL}
-                // onChange={(event) => setPhotoURL(event.target.value)}
+                value={photoURL}
+                onChange={(event) => setPhotoURL(event.target.value)}
                 required
                 id="imageUrl"
                 className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2  focus:ring-blue-500" />
             </div>
+            <p className="text-lg text-green-500">{successMessage}<Link to='/login'><br></br><span className='text-lg p-1 text-black bg-green-500 font-semibold'>Login Now</span></Link> </p>
+            <p className="text-lg text-red-500">{passError}</p>
             <button className="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">Register</button>
           </form>
           <p className="text-gray-600 mt-4">
